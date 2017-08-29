@@ -8,14 +8,13 @@ app.use('/modules', express.static('node_modules'));
 
 
 app.get('/products', function (req, res) {
-    request('https://m.lowes.com/CatalogServices/product/nvalue/v1_0?nValue=4294857975&maxResults=6&showURL=1&rollUpVariants=1&showUrl=true&storeNumber=0595&priceFlag=rangeBalance&showMarketingBullets=1', function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            res.send(body)
-         }else{
-            res.send({error:"Service is down"});
-         }
-    });
-})
+    res.send([{prodName:"Product 1" , code:"CX1001"},
+              {prodName:"Product 2" , code:"CX1002"},
+              {prodName:"Product 3" , code:"CX1003"},
+              {prodName:"Product 4" , code:"CX1004"},
+              {prodName:"Product 5" , code:"CX1005"},
+              {prodName:"Product 6" , code:"CX1006"}]);
+});
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
